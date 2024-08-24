@@ -1,14 +1,22 @@
 import streamlit as st
-from pytube import YouTube
+import yt_dlp
 import os
 
 # Function to download the audio
 def download_audio(youtube_url):
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '96',
+        }],
+        'outtmpl': 'audio.%(ext)s',
+    }
     try:
-        yt = YouTube(youtube_url)
-        audio_stream = yt.streams.filter(only_audio=True).first()
-        output_file = audio_stream.download(output_path='.', filename='audio.mp4')
-        return output_file, yt.title
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([youtube_url])
+        return 'audio.mp3', "Download completed"
     except Exception as e:
         return None, str(e)
 
@@ -20,13 +28,15 @@ def main():
     
     if st.button("Download Audio"):
         if youtube_url:
-            output_file, message = download_audio(youtube_url)
-            if output_file:
-                st.success(f"Download successful: {message}")
-                with open(output_file, 'rb') as f:
-                    st.download_button('Download Audio File', f, file_name=f'{message}.mp4')
-            else:
-                st.error(f"Error: {message}")
+            with st.spinner(f"Transcribing... This may take a while for larger files."):
+                output_file, message = download_audio(youtube_url)
+                if output_file:
+                    st.success(message)
+                    with open(output_file, 'rb') as f:
+                        st.download_button('Download Audio File', f, file_name=output_file)
+                    os.remove(output_file)
+                else:
+                    st.error(f"Error: {message}")
         else:
             st.warning("Please enter a YouTube URL")
 
