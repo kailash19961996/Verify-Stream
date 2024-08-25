@@ -4,9 +4,7 @@ VerifyStream is an AI-powered application that helps users verify the content of
 
 [Click here to try the app](https://verifystream.streamlit.app/)
 
-Click below to see the 90-second video tutorial
-
-[![Watch the video](https://www.youtube.com/watch?v=y0-HCpPWZlg&feature=youtu.be/0.jpg)](https://www.youtube.com/watch?v=y0-HCpPWZlg&feature=youtu.be)
+[Click here to see the 90 second demo](https://www.youtube.com/watch?v=y0-HCpPWZlg)
 
 [Visit my website for more](https://kailash.london/)
 
