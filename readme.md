@@ -5,6 +5,8 @@ Developed for a Hackathon: AI Capability and Risk Demos organised by [Safe AI Lo
 ![verifystream](https://github.com/user-attachments/assets/198b3dca-eb93-40a9-9f23-d32258f4354f)
 
 [Click here to try the app](https://verifystream.streamlit.app/)
+(Please be noted that YouTube asks for sign in while trying the app directly from Streamlit cloud. It is advisable to try it locally. More information on how to how to try it locally is shared below)
+
 
 [Click here to see the 90 second demo](https://www.youtube.com/watch?v=7p44bkYDjEU)
 
