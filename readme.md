@@ -3,6 +3,7 @@
 VerifyStream is an AI-powered application that helps users verify the content of YouTube videos and demonstrates the dual nature of AI in combating and potentially creating misinformation.
 
 https://github.com/user-attachments/assets/f8de2820-3b52-4873-8a54-f0a8afda9170
+![verifystream](https://github.com/user-attachments/assets/b66162a3-a0d3-474f-819d-10e944743bda)
 
 [Click here to try the app](https://verifystream.streamlit.app/)
 
