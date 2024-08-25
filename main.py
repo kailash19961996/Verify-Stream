@@ -156,9 +156,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# https://www.youtube.com/watch?v=y0-HCpPWZlg
+# https://www.youtube.com/watch?v=7p44bkYDjEU
 
-video_id = "y0-HCpPWZlg"
+video_id = "7p44bkYDjEU"
 youtube_embed_url = f"https://www.youtube.com/embed/{video_id}?autoplay=1&mute=0"
 st.markdown(f"""
     <style>
