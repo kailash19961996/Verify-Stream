@@ -136,18 +136,6 @@ with col1:
 
 with col2:
     st.title("Verify Stream")
-
-coll1,coll2,coll3 = st.columns(3)
-with coll2:
-    st.write(
-        f"""
-            <div style='display: flex; align-items: center;'>
-            <a href = 'https://kailash.london/'><img src='{website}' style='width: 45px; height: 45px; margin-right: 25px;'></a>
-            <a href = 'https://www.youtube.com/@kailashbalasubramaniyam2449/videos'><img src='{Youtube}' style='width: 28px; height: 28px; margin-right: 25px;'></a>
-            <a href = 'https://www.linkedin.com/in/kailash-kumar-balasubramaniyam-62b075184'><img src='{linkedin}' style='width: 35px; height: 35px; margin-right: 25px;'></a>
-            <a href = 'https://github.com/kailash19961996'><img src='{github}' style='width: 30px; height: 30px; margin-right: 25px;'></a>
-            <a href = 'mailto:kailash.balasubramaniyam@gmail.com''><img src='{email}' style='width: 31px; height: 31px; margin-right: 25px;'></a>
-        </div>""", unsafe_allow_html=True,)
     
 st.markdown("""
 <div style='text-align: center;'>
@@ -308,3 +296,15 @@ st.markdown("""
     Built by Kai. Like this? <a href="https://kailash.london/">Hire me!</a>
 </div>
 """, unsafe_allow_html=True)
+
+coll1,coll2,coll3 = st.columns(3)
+with coll2:
+    st.write(
+        f"""
+            <div style='display: flex; align-items: center;'>
+            <a href = 'https://kailash.london/'><img src='{website}' style='width: 45px; height: 45px; margin-right: 25px;'></a>
+            <a href = 'https://www.youtube.com/@kailashbalasubramaniyam2449/videos'><img src='{Youtube}' style='width: 28px; height: 28px; margin-right: 25px;'></a>
+            <a href = 'https://www.linkedin.com/in/kailash-kumar-balasubramaniyam-62b075184'><img src='{linkedin}' style='width: 35px; height: 35px; margin-right: 25px;'></a>
+            <a href = 'https://github.com/kailash19961996'><img src='{github}' style='width: 30px; height: 30px; margin-right: 25px;'></a>
+            <a href = 'mailto:kailash.balasubramaniyam@gmail.com''><img src='{email}' style='width: 31px; height: 31px; margin-right: 25px;'></a>
+        </div>""", unsafe_allow_html=True,)
