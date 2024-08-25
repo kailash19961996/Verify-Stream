@@ -7,6 +7,12 @@ from background import add_bg_from_local, describe_statement, generate_fact_chec
 
 add_bg_from_local('images/bg5.jpg')
 
+linkedin = "https://raw.githubusercontent.com/kailash19961996/icons-and-images/main/linkedin.gif"
+github =   "https://raw.githubusercontent.com/kailash19961996/icons-and-images/main/gitcolor.gif"
+Youtube =  "https://raw.githubusercontent.com/kailash19961996/icons-and-images/main/371907120_YOUTUBE_ICON_TRANSPARENT_1080.gif"
+email =    "https://raw.githubusercontent.com/kailash19961996/icons-and-images/main/emails33.gif"
+website =  "https://raw.githubusercontent.com/kailash19961996/icons-and-images/main/www.gif"
+
 # Custom CSS to force white text color and style the menu bar
 st.markdown("""
     <style>
@@ -124,12 +130,68 @@ st.markdown("""
 def spline_component(url, width=150, height=90):
     components.iframe(url, width=width, height=height)
 
-col1, col2 = st.columns([1, 4])
+col1, col2 = st.columns([1, 3])
 with col1:
     spline_component("https://lottie.host/embed/c723a9ba-2211-4763-8577-5ef32f97a869/yNF4aB95zv.json")
 
 with col2:
     st.title("Verify Stream")
+
+coll1,coll2,coll3 = st.columns(3)
+with coll2:
+    st.write(
+        f"""
+            <div style='display: flex; align-items: center;'>
+            <a href = 'https://kailash.london/'><img src='{website}' style='width: 45px; height: 45px; margin-right: 25px;'></a>
+            <a href = 'https://www.youtube.com/@kailashbalasubramaniyam2449/videos'><img src='{Youtube}' style='width: 28px; height: 28px; margin-right: 25px;'></a>
+            <a href = 'https://www.linkedin.com/in/kailash-kumar-balasubramaniyam-62b075184'><img src='{linkedin}' style='width: 35px; height: 35px; margin-right: 25px;'></a>
+            <a href = 'https://github.com/kailash19961996'><img src='{github}' style='width: 30px; height: 30px; margin-right: 25px;'></a>
+            <a href = 'mailto:kailash.balasubramaniyam@gmail.com''><img src='{email}' style='width: 31px; height: 31px; margin-right: 25px;'></a>
+        </div>""", unsafe_allow_html=True,)
+    
+st.markdown("""
+<div style='text-align: center;'>
+     <i>"Verify YouTube video claims with ease, or see how AI can twist facts—this app is a double-edged tool for truth and misinformation."<i>
+     <h4>90-second Demo</h4>
+</div>
+""", unsafe_allow_html=True)
+
+# https://www.youtube.com/watch?v=y0-HCpPWZlg
+
+video_id = "y0-HCpPWZlg"
+youtube_embed_url = f"https://www.youtube.com/embed/{video_id}?autoplay=1&mute=0"
+st.markdown(f"""
+    <style>
+        .video-outer-container {{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding-top: 1px; 
+        }}
+        .video-container {{
+            position: relative;
+            width: 50%;
+            padding-bottom: 28.125%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }}
+        .video-container iframe {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }}
+    </style>
+    <div class="video-outer-container">
+        <div class="video-container">
+            <iframe src="{youtube_embed_url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
 # API's and credentials
 openai.api_key = st.secrets["openai"]["api_key"]
@@ -165,8 +227,8 @@ if st.button("Verify"):
                     st.write(description)
 
                 prompts = generate_fact_check(transcription)
-                # st.subheader("Prompts")
-                # st.write(prompts)
+                st.subheader("Smart Prompts")
+                st.write(prompts)
 
                 # Searching google
                 with st.spinner('Googling...'):
