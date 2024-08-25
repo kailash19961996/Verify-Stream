@@ -1,6 +1,6 @@
 # VerifyStream
 
-Developed for a Hackathon: AI Capability and Risk Demos organised by [Safe AI London](https://www.safeailondon.org/) VerifyStream is an AI-powered application that helps users verify the content of YouTube videos and demonstrates the dual nature of AI in combating and potentially creating misinformation.
+Developed for a Hackathon: AI Capability and Risk Demos organised by [Safe AI London](https://www.safeailondon.org/) and [Apart Research](https://www.apartresearch.com/), [VerifyStream](https://verifystream.streamlit.app/) is an AI-powered application that helps users verify the content of YouTube videos and demonstrates the dual nature of AI in combating and potentially creating misinformation.
 
 ![verifystream](https://github.com/user-attachments/assets/198b3dca-eb93-40a9-9f23-d32258f4354f)
 
@@ -9,7 +9,6 @@ Developed for a Hackathon: AI Capability and Risk Demos organised by [Safe AI Lo
 [Click here to see the 90 second demo](https://www.youtube.com/watch?v=7p44bkYDjEU)
 
 [Visit my website for more](https://kailash.london/)
-
 
 ## Features
 
