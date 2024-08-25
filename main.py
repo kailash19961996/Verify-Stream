@@ -159,7 +159,7 @@ st.markdown("""
 # https://www.youtube.com/watch?v=7p44bkYDjEU
 
 video_id = "7p44bkYDjEU"
-youtube_embed_url = f"https://www.youtube.com/embed/{video_id}?autoplay=1&mute=0"
+youtube_embed_url = f"https://www.youtube.com/embed/{video_id}?autoplay=0&mute=0"
 st.markdown(f"""
     <style>
         .video-outer-container {{
