@@ -132,11 +132,11 @@ with col2:
     st.title("Verify Stream")
 
 # API's and credentials
-openai.api_key = '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'
+openai.api_key = st.secrets["openai"]["api_key"]
 models = ["gpt-4o-2024-08-06", "gpt-4o-mini", "gpt-4o", "gpt-3.5-turbo"]
 small_model = models[1]
-GOOGLE_API_KEY = "AIzaSyDd6clxZcueZXGGRySfubDm0NXAZyG1xVY"
-SEARCH_ENGINE_ID = "d5319dcfff9d64fb6"
+GOOGLE_API_KEY = st.secrets["google"]["api_key"]
+SEARCH_ENGINE_ID = st.secrets["google2"]["search_engine"]
 
 # Essential functions
 # Load Whisper model and processor
