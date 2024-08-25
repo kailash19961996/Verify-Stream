@@ -152,6 +152,10 @@ if st.button("Verify"):
     if youtube_url:
         with st.spinner("Downloading audio... This may take a while."):
             output_file, message = download_audio(youtube_url)
+            if output_file:
+                st.success(message)
+            else:
+                st.error(f"Error: {message}")
 
         with st.spinner("Extracting text from audio..."):
             processor, model = load_whisper_model()
