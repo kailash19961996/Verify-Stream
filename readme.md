@@ -64,4 +64,4 @@ Contributions to improve VerifyStream are welcome. Please feel free to submit pu
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](https://opensource.org/license/mit)
