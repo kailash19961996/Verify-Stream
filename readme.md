@@ -32,7 +32,7 @@ VerifyStream is an AI-powered application that helps users verify the content of
   - OpenAI's GPT models for text generation and analysis
   - Whisper for speech-to-text conversion
   - DALL-E for image generation
-- **Web Scraping**: Requests and BeautifulSoup
+- **Web Scraping**: Google search API, Requests and BeautifulSoup
 - **Audio Processing**: yt-dlp and librosa
 
 ## Setup and Usage
@@ -40,9 +40,12 @@ VerifyStream is an AI-powered application that helps users verify the content of
 1. Clone the repository
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Set up your API keys in the Streamlit secrets manager:
-   - OpenAI API key
-   - Google Custom Search API key
-   - Google Search Engine ID
+   - OpenAI API key ([FOLLOW THIS LINK TO GET YOUR API](https://platform.openai.com/settings/organization/billing/overview))
+   - Google Custom Search API key ([FOLLOW THIS LINK TO GET YOUR API](https://console.cloud.google.com/))
+   - Google Search Engine ID ([FOLLOW THIS LINK TO GET YOUR ID](https://programmablesearchengine.google.com/controlpanel/all))
+    (Create a "streamlit" folder in local repo and create "secrets.toml" file inside the streamlit folder. Add the API keys in below format)
+![Screenshot 2024-08-25 at 5 54 07 PM](https://github.com/user-attachments/assets/0350bec5-3ec8-4ddd-8c81-7950dd705d27)
+
 4. Run the Streamlit app: `streamlit run main.py`
 
 ## Ethical Considerations
