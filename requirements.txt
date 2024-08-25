@@ -207,3 +207,4 @@ yarl==1.9.4
 yfinance==0.2.40
 yt-dlp==2024.8.6
 zipp==3.19.2
+imageio[ffmpeg]
