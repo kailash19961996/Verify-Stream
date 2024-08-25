@@ -198,7 +198,7 @@ def load_whisper_model():
 youtube_url = st.text_input("Enter YouTube URL")
 st.markdown("""
 <div style='text-align: center;'>
-     <i>(Please be noted that sometimes YouTube doesn't allow to download audio while trying the app directly from Streamlit cloud. It is advisable to try it locally. More information on how to try it locally is shared in <a href='[https://github.com/kailash19961996/verify-stream/blob/main/main.py]' target='_blank'>GitHub</a>.))<i>
+     <i>(Note: YouTube may block audio downloads on Streamlit cloud. For best results, run the app locally. Find local setup details on <a href='[https://github.com/kailash19961996/verify-stream/blob/main/main.py]' target='_blank'>GitHub</a>.))<i>
 </div>
 """, unsafe_allow_html=True)
 if st.button("Verify"):
