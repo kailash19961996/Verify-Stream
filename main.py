@@ -225,12 +225,7 @@ if st.button("Verify"):
                                     st.markdown(extended_content)
                     else:
                         st.error("Transcription failed.")
-                
-            else:
-                st.error(f"Error: {message}")
-
-        
-        
+                        
         # Clean up the temporary audio file
         if output_file and os.path.exists(output_file):
             os.remove(output_file)
