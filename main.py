@@ -153,82 +153,83 @@ if st.button("Verify"):
         with st.spinner("Downloading audio... This may take a while."):
             output_file, message = download_audio(youtube_url)
             if output_file:
-                st.success(message)
+                with st.spinner("Extracting text from audio..."):
+                    processor, model = load_whisper_model()
+                    transcription = transcribe_audio(output_file, processor, model)
+
+                    if transcription:
+                        # st.text_area("Extracted Text", value=transcription, height=100)
+                        description = describe_statement(transcription)
+                        st.subheader("Video Description")
+                        st.write(description)
+
+                        prompts = generate_fact_check(transcription)
+                        # st.subheader("Prompts")
+                        # st.write(prompts)
+
+                        # Searching google
+                        with st.spinner('Googling...'):
+                            st.subheader("Google Search Results")
+                            contents = []
+                            for query in prompts:
+                                results = google_search(query, GOOGLE_API_KEY, SEARCH_ENGINE_ID, num=2)
+
+                                if results is None:
+                                    st.error("Failed to get results. Please check your API key and Search Engine ID.")
+                                elif 'error' in results:
+                                    st.error(f"API Error: {results['error']['message']}")
+                                elif 'items' in results:
+                                    for item in results['items']:
+                                        st.write(item['title'])
+                                        st.write(item['link'])
+
+                                        # Extract and summarize content from the URL
+                                        content = extract_text_from_url(item['link'])
+                                        if content:
+                                            contents.append(content[:10000])
+                                else:
+                                    st.write('No results found for this query.')
+
+                            # Combine summaries into one final summary
+                            final_summary = summarize_text(description, ' '.join(contents))
+                            st.subheader("Verdict")
+                            st.write(final_summary)
+
+                            # Creating Fake news
+                            with st.spinner("Creating fake news..."):
+                                opposite_narrative = generate_opposite_narrative(description)
+                                fake_news_title, fake_news_content = generate_fake_news(opposite_narrative)
+                                with st.spinner("Creating images..."):
+                                    image_prompt = f"An illustration for a news article: {fake_news_title}"
+                                    image = generate_image(image_prompt)
+
+                            # Display outputs
+                            # st.subheader("Opposite Narrative")
+                            # st.write(opposite_narrative)
+
+                            st.subheader("Fake News")
+                            st.subheader(fake_news_title)
+                            st.image(image, caption=fake_news_title, width=256)
+                            
+                            paragraphs = fake_news_content.split('\n\n', 5) 
+                            if len(paragraphs) > 2:
+                                intro_content = paragraphs[0] + '\n\n' + paragraphs[1] + '\n\n' + paragraphs[2] + '\n\n' + paragraphs[3] + '\n\n' + paragraphs[4]
+                                extended_content = paragraphs[5]
+                            else:
+                                intro_content = fake_news_content
+                                extended_content = ""
+
+                            st.write(intro_content) 
+                            if extended_content:
+                                with st.expander("Read More"):
+                                    st.markdown(extended_content)
+                    else:
+                        st.error("Transcription failed.")
+                
             else:
                 st.error(f"Error: {message}")
 
-        with st.spinner("Extracting text from audio..."):
-            processor, model = load_whisper_model()
-            transcription = transcribe_audio(output_file, processor, model)
-
-            if transcription:
-                # st.text_area("Extracted Text", value=transcription, height=100)
-                description = describe_statement(transcription)
-                st.subheader("Video Description")
-                st.write(description)
-
-                prompts = generate_fact_check(transcription)
-                # st.subheader("Prompts")
-                # st.write(prompts)
-
-                # Searching google
-                with st.spinner('Googling...'):
-                    st.subheader("Google Search Results")
-                    contents = []
-                    for query in prompts:
-                        results = google_search(query, GOOGLE_API_KEY, SEARCH_ENGINE_ID, num=2)
-
-                        if results is None:
-                            st.error("Failed to get results. Please check your API key and Search Engine ID.")
-                        elif 'error' in results:
-                            st.error(f"API Error: {results['error']['message']}")
-                        elif 'items' in results:
-                            for item in results['items']:
-                                st.write(item['title'])
-                                st.write(item['link'])
-
-                                # Extract and summarize content from the URL
-                                content = extract_text_from_url(item['link'])
-                                if content:
-                                    contents.append(content[:10000])
-                        else:
-                            st.write('No results found for this query.')
-
-                    # Combine summaries into one final summary
-                    final_summary = summarize_text(description, ' '.join(contents))
-                    st.subheader("Verdict")
-                    st.write(final_summary)
-
-                    # Creating Fake news
-                    with st.spinner("Creating fake news..."):
-                        opposite_narrative = generate_opposite_narrative(description)
-                        fake_news_title, fake_news_content = generate_fake_news(opposite_narrative)
-                        with st.spinner("Creating images..."):
-                            image_prompt = f"An illustration for a news article: {fake_news_title}"
-                            image = generate_image(image_prompt)
-
-                    # Display outputs
-                    # st.subheader("Opposite Narrative")
-                    # st.write(opposite_narrative)
-
-                    st.subheader("Fake News")
-                    st.subheader(fake_news_title)
-                    st.image(image, caption=fake_news_title, width=256)
-                    
-                    paragraphs = fake_news_content.split('\n\n', 5) 
-                    if len(paragraphs) > 2:
-                        intro_content = paragraphs[0] + '\n\n' + paragraphs[1] + '\n\n' + paragraphs[2] + '\n\n' + paragraphs[3] + '\n\n' + paragraphs[4]
-                        extended_content = paragraphs[5]
-                    else:
-                        intro_content = fake_news_content
-                        extended_content = ""
-
-                    st.write(intro_content) 
-                    if extended_content:
-                        with st.expander("Read More"):
-                            st.markdown(extended_content)
-            else:
-                st.error("Transcription failed.")
+        
         
         # Clean up the temporary audio file
         if output_file and os.path.exists(output_file):
