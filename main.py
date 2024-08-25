@@ -299,3 +299,9 @@ if st.button("Verify"):
             os.remove(output_file)
     else:
         st.warning("Please enter a YouTube URL")
+
+st.markdown("""
+<div style='text-align: center;'>
+    Built by Kai. Like this? <a href="https://kailash.london/">Hire me!</a>
+</div>
+""", unsafe_allow_html=True)
