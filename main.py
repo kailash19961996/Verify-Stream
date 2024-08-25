@@ -156,8 +156,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# https://www.youtube.com/watch?v=7p44bkYDjEU
-
 video_id = "7p44bkYDjEU"
 youtube_embed_url = f"https://www.youtube.com/embed/{video_id}?autoplay=0&mute=0"
 st.markdown(f"""
@@ -210,6 +208,11 @@ def load_whisper_model():
 
 # Streamlit App   
 youtube_url = st.text_input("Enter YouTube URL")
+st.markdown("""
+<div style='text-align: center;'>
+     <i>(Please be noted that YouTube asks for sign in while trying the app directly from Streamlit cloud. It is advisable to try it locally. More information on how to how to try it locally is shared in github)<i>
+</div>
+""", unsafe_allow_html=True)
 if st.button("Verify"):
     if youtube_url:
         with st.spinner("Downloading audio... This may take a while."):
